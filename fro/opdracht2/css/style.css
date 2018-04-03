@@ -1,0 +1,16 @@
+body {
+  text-align: center;
+}
+
+#wrapper {
+  border-style: solid;
+  text-align: center;
+  border-radius: 5px;
+  padding: 20px;
+  border-width: thick;
+  width: 30em;
+}
+
+#feedback {
+  width: 400px;
+}
