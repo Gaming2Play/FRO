@@ -1,20 +1,27 @@
 function ajax(gewicht, lengte) {
-  let debug = true;
-  if (window.XMLHttpRequest) {
-    xmlhttp = new XMLHttpRequest();
-  } else {
-    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    let debug = true;
+    if (window.XMLHttpRequest){
+        XMLHttp = new XMLHttpRequest();
+    }else {
+        XMLHttp = new ActiveXObject("Microsoft.XMLHTTP");
     }
-  let controlScript = "BMI.php";
-  let httpString = controlScript + "?gewicht=" + gewicht + "&lengte_cm" + lengte;
-  let httpResponse = "";
-  if (debug) console.log(httpString);
-  xmlhttp.open("GET", httpString, true);
-  xmlhttp.send();
-  xmlhttp.onreadystatechange = function() {
-    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-      if(debug) console.log("http response = " + xmlhttp.responseText);
-      httpResponse = xmlhttp.responseText;
-      document.getElementById('resultaat').innerHTML = httpResponse;
-    }}
+    let controlScript = "BMI.php";
+    let httpString = controlScript + "?lengte_cm=" + lengte + "&gewicht=" + gewicht;
+    let httpRepose = "";
+    if (debug) {
+        console.log(httpString);
+    }
+    XMLHttp.open("GET", httpString, true);
+    XMLHttp.send();
+    XMLHttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            if (debug){
+                console.log("http reponse = " + XMLHttp.responseText);
+            }
+            httpRepose = XMLHttp.responseText;
+            resultaat.innerHTML = httpRepose;
+            resultaat.style.border = "1px solid #000";
+
+        }
+    }
 }
